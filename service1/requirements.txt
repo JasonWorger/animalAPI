@@ -1,0 +1,7 @@
+Flask
+gunicorn==20.0.4
+Werkzeug==0.16.1
+requests
+flask-testing
+pytest
+pytest-cov
