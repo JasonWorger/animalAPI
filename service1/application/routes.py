@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from application import app
 from random import randint
 import random 
@@ -13,10 +13,12 @@ def home():
 
 @app.route("/generate", methods=['GET','POST'])
 def animal():
-    animal_response = requests.get("http://35.189.85.195:5001/get/animal")
-    animal1 = animal_response.json()["animal"]
-    # animal1 = animal1["animal"]
-    noise_reponse = requests.post("http://35.189.85.195:5001/get/noise", json={"animal": animal1})
-    noise1 = animal_response.json()["noise"]
-    return render_template("generate.html", animal= animal1, noise=noise1)
+    animal_response = requests.get("http://34.105.242.163:5001/get/animal")
+    animal1 = animal_response.json()
+    animal2 = animal1["animal"]
+    noise_response = requests.post("http://34.105.242.163:5001/get/noise", json={"animal": animal2})
+    noise1 = noise_response.json()
+    noise2 = noise1["noise"]
+
+    return render_template("generate.html", animal= animal2, noise=noise2)
     
